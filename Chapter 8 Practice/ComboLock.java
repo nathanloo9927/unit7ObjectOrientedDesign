@@ -98,5 +98,6 @@ public class ComboLock
         //int number3 = r.nextInt(40);
         //ComboLock l = new ComboLock(number1,number2,number3);
         //System.out.print("How many times do you want to turn right?: ");
+        //int dr
     }
 }
