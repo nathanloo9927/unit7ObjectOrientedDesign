@@ -7,5 +7,10 @@ public class IDCard extends Card
         super(n);
         idNumber = id;
     }
-    
+    public String format()
+    {
+        String str = super.format();
+        str += "\nID: " + idNumber;
+        return str;
+    }
 }
