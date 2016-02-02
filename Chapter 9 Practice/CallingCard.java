@@ -13,6 +13,11 @@ public class CallingCard extends Card
     {
         String str = super.format();
         str += "\nNumber: (" + cardNum.substring(0,3) + ") - " + cardNum.substring(3,6) + " - " + cardNum.substring(6,10);
+        str += "\nPin: " + p;
         return str;
+    }
+    public String toString()
+    {
+        return "CallingCard[name = " + super.getName() + "][number = " + cardNum + ", pin = " + p + "]";
     }
 }

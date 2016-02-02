@@ -27,4 +27,13 @@ public class Card
    {
       return "Card holder: " + name;
    }
+   
+   public String toString()
+   {
+       return "Card[name = " + name + "]";
+    }
+   public boolean equals(Card card)
+   {
+       return name.equals(card.getName());
+    }
 }

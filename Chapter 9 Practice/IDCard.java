@@ -13,4 +13,12 @@ public class IDCard extends Card
         str += "\nID: " + idNumber;
         return str;
     }
+    public String toString()
+    {
+        return "ID[name = " + super.getName() + "][ID = " + idNumber + "]";
+    }
+    public boolean equals(IDCard card)
+    {
+        return false;
+    }
 }
