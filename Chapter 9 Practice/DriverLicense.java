@@ -31,4 +31,10 @@ public class DriverLicense extends Card
     {
         return "DriverLicense[name = " + super.getName() + "][expires in = " + year + "]";
     }
+    /*
+    public boolean equals(Object huh)
+    {
+        return false;
+    }
+    */
 }

@@ -17,8 +17,18 @@ public class IDCard extends Card
     {
         return "ID[name = " + super.getName() + "][ID = " + idNumber + "]";
     }
-    public boolean equals(IDCard card)
+    // override the equals method defined in Card as well as Object
+    public boolean equals(Object huh)
     {
+        // check if this object and the other object are both of the same class
+        if (this.getClass() == huh.getClass())
+        {
+            // first check if this object and the other object are equal from the perspective of the superclass (ex: card)
+            boolean nameEqual = super.equals(huh);
+            // second cast the other object to an IDCard and check if idNumbers are equal
+            IDCard other = (IDCard) huh;
+            return nameEqual && (this.idNumber.equals(other.idNumber));
+        }
         return false;
     }
 }

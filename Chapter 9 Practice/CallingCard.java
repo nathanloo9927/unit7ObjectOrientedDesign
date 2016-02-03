@@ -20,4 +20,10 @@ public class CallingCard extends Card
     {
         return "CallingCard[name = " + super.getName() + "][number = " + cardNum + ", pin = " + p + "]";
     }
+    /*
+    public boolean equals(Object huh)
+    {
+        return false;
+    }
+    */
 }
