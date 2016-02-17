@@ -11,8 +11,8 @@ public class TriangleFrame extends JFrame
     {
         public void mousePressed(MouseEvent event)
         {
-            int x = event.getX();
-            int y = event.getY();
+            t.addPoint(event.getX(), event.getY());
+            repaint();
         }
         public void mouseReleased(MouseEvent event)
         {
@@ -33,11 +33,11 @@ public class TriangleFrame extends JFrame
     }
     public TriangleFrame()
     {
-        t = new TriangleComponent(150, 50, 75, 200, 225, 200);
+        t = new TriangleComponent();
         add(t);
         
         MouseListener listener = new MousePressListener();
-        t.addMouseListener(listener);
+        //t.addMouseListener(listener);
         
         setSize(width,height);
     }
