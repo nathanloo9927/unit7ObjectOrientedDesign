@@ -1,53 +1,41 @@
-
-
-/**
- * Write a description of abstract class Shape here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.geom.*;
+import java.awt.event.*;
 public abstract class Shape
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
-    /**
-     * Default constructor for objects of class Shape
-     */
-    public Shape()
+    private Point2D.Double ctr;
+    private double r;
+    private Color c;
+    public Shape(Point2D.Double center, double radius, Color color)
     {
-        // initialise instance variables
-        x = 0;
+        this.ctr = center;
+        this.r = radius;
+        this.c = color;
     }
-    
-    /**
-     * An example of an abstract method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public abstract int sampleAbstractMethod(int y);
-
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    public Point2D.Double getCenter()
     {
-        // put your code here
-        return x+y;
+        return this.ctr;
     }
-
+    public double getRadius()
+    {
+        return this.r;
+    }
+    public void move(double x, double y)
+    {
+        ctr = new Point2D.Double(x,y);
+    }
+    public void setRadius(double rad)
+    {
+        this.r = rad;
+    }
+    public boolean isInside(Point2D.Double point)
+    {
+        return false;
+    }
+    public void draw(Graphics2D g2, boolean filled)
+    {
+        
+    }
 }
