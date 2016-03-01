@@ -9,4 +9,8 @@ public class Square extends Shape
     {
         super(center, radius, color);
     }
+    public void draw(Graphics2D g2, boolean filled)
+    {
+        Rectangle rect = new Rectangle(100,100,100,100);
+    }
 }

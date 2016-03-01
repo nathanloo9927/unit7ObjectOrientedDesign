@@ -1,40 +1,23 @@
-
-
-/**
- * Write a description of class Circle here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Circle
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.geom.*;
+import java.awt.event.*;
+public class Circle extends Shape
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
-    /**
-     * Default constructor for objects of class Circle
-     */
-    public Circle()
+    public Circle(Point2D.Double center, double radius, Color color)
     {
-        // initialise instance variables
-        x = 0;
+        super(center, radius, color);
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    public void draw(Graphics2D g2, boolean filled)
     {
-        // put your code here
-        return x+y;
+        double x = super.getCenter().getX();
+        double y = super.getCenter().getY();
+        Ellipse2D.Double circle = new Ellipse2D.Double(x, y, super.getRadius() * 2, super.getRadius() * 2);
+        g2.draw(circle);
+        if (filled == true)
+        {
+            g2.fill(circle);
+        }
     }
-
 }

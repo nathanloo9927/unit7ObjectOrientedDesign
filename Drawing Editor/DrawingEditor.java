@@ -13,8 +13,8 @@ public class DrawingEditor extends JFrame
         this.setSize(width, height);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //DrawingPanel canvas = new DrawingPanel();
-        ControlPanel controls = new ControlPanel(/*canvas*/);
+        DrawingPanel canvas = new DrawingPanel();
+        ControlPanel controls = new ControlPanel(canvas);
         this.add(controls);
         
         this.setVisible(true);

@@ -12,8 +12,10 @@ public class ControlPanel extends JPanel
     private JPanel bottomPanel;
     private BorderLayout border;
     private DrawingPanel canvas;
-    public ControlPanel(/*DrawingPanel canvas*/)
+    public ControlPanel(DrawingPanel canvas)
     {
+        this.canvas = canvas;
+        
         this.color = new JButton("Pick Color");
         this.circle = new JButton("Add Circle");
         this.square = new JButton("Add Square");
