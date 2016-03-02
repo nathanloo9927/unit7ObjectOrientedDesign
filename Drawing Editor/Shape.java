@@ -34,8 +34,4 @@ public abstract class Shape
     {
         return false;
     }
-    public void draw(Graphics2D g2, boolean filled)
-    {
-        
-    }
 }

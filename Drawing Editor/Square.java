@@ -11,6 +11,13 @@ public class Square extends Shape
     }
     public void draw(Graphics2D g2, boolean filled)
     {
-        Rectangle rect = new Rectangle(100,100,100,100);
+        double x = super.getCenter().getX();
+        double y = super.getCenter().getY();
+        Rectangle2D.Double square = new Rectangle2D.Double(x, y, super.getRadius() * 2, super.getRadius() * 2);
+        g2.draw(square);
+        if (filled == true)
+        {
+            g2.fill(square);
+        }
     }
 }

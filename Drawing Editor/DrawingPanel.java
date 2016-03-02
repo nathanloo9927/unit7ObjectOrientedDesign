@@ -5,25 +5,25 @@ import java.awt.geom.*;
 import java.awt.event.*;
 public class DrawingPanel extends JFrame
 {
-    private int count;
     private ArrayList<Shape> shapes;
     private JColorChooser cc;
     private Color color;
+    private int active;
     public DrawingPanel()
     {
-        count = 0;
+        active = 0;
         MouseListener listener = new MousePressListener();
         MouseMotionListener motion = new MouseMoveListener();
         Color color = Color.RED;
         cc = new JColorChooser(color);
     }
-    public /*Color*/ void /*(using void to compile)*/ getColor()
+    public Color getColor()
     {
-        
+        return color;
     }
-    public /*Dimension*/ void /*(using void to compile)*/ getSomething/*getPreferredSize (using getSomething to compile)*/()
+    public Dimension getPreferredSize()
     {
-        
+        return new Dimension(400,400);
     }
     public void pickColor()
     {
@@ -31,15 +31,27 @@ public class DrawingPanel extends JFrame
     }
     public void addCircle()
     {
-        
+        Point2D.Double shape = new Point2D.Double(200,200);
+        Circle c = new Circle(shape, 50, color);
+        this.shapes.add(c);
+        active = shapes.size() - 1;
+        repaint();
     }
     public void addSquare()
     {
-        
+        Point2D.Double shape = new Point2D.Double(200,200);
+        Square s = new Square(shape, 50, color);
+        this.shapes.add(s);
+        active = shapes.size() - 1;
+        repaint();
     }
     public void paintComponent(Graphics g)
     {
-        
+        Graphics2D g2 = (Graphics2D) g;
+        for (int i = 0 ; i < active; i++)
+        {
+        }
+        repaint();
     }
     class MousePressListener implements MouseListener
     {
