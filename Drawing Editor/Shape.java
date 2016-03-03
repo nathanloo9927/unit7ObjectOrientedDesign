@@ -22,6 +22,10 @@ public abstract class Shape
     {
         return this.r;
     }
+    public Color getColor()
+    {
+        return this.c;
+    }
     public void move(double x, double y)
     {
         ctr = new Point2D.Double(x,y);
@@ -30,8 +34,6 @@ public abstract class Shape
     {
         this.r = rad;
     }
-    public boolean isInside(Point2D.Double point)
-    {
-        return false;
-    }
+    public abstract boolean isInside(Point2D.Double point);
+    public abstract void draw(Graphics2D g2, boolean filled);
 }

@@ -4,17 +4,20 @@ import javax.swing.*;
 import java.awt.geom.*;
 import java.awt.event.*;
 import java.applet.*;
+
 public class ControlPanel extends JPanel
 {
     private JButton color;
     private JButton circle;
     private JButton square;
+    private JPanel colorShower;
     private JPanel bottomPanel;
     private BorderLayout border;
     private DrawingPanel canvas;
     public ControlPanel(DrawingPanel canvas)
     {
         this.canvas = canvas;
+        this.colorShower = new JPanel();
         
         this.color = new JButton("Pick Color");
         this.circle = new JButton("Add Circle");
@@ -27,8 +30,10 @@ public class ControlPanel extends JPanel
         ClickListener listener3 = new ClickListener(3);
         this.square.addActionListener(listener3);
         
+        this.colorShower.setBackground(canvas.getColor());
         this.bottomPanel = new JPanel();
         bottomPanel.add(this.color);
+        bottomPanel.add(this.colorShower);
         bottomPanel.add(this.circle);
         bottomPanel.add(this.square);
         
@@ -49,6 +54,7 @@ public class ControlPanel extends JPanel
             if (number == 1)
             {
                 canvas.pickColor();
+                colorShower.setBackground(canvas.getColor());
             } else if (number == 2)
             {
                 canvas.addCircle();
@@ -56,6 +62,8 @@ public class ControlPanel extends JPanel
             {
                 canvas.addSquare();
             }
+            
+            canvas.repaint();
         }
     }
 }
