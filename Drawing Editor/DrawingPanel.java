@@ -3,18 +3,20 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
 import java.awt.event.*;
-public class DrawingPanel extends JFrame
+public class DrawingPanel extends JComponent
 {
     private ArrayList<Shape> shapes;
     private JColorChooser cc;
     private Color color;
-    private int active;
+    private Shape active;
     public DrawingPanel()
     {
-        active = 0;
+        shapes = new ArrayList<Shape>();
         MouseListener listener = new MousePressListener();
+        this.addMouseListener(listener);
         MouseMotionListener motion = new MouseMoveListener();
-        Color color = Color.RED;
+        this.addMouseMotionListener(motion);
+        color = Color.RED;
         cc = new JColorChooser(color);
     }
     public Color getColor()
@@ -23,41 +25,58 @@ public class DrawingPanel extends JFrame
     }
     public Dimension getPreferredSize()
     {
-        return new Dimension(400,400);
+        return new Dimension(1000,800);
     }
     public void pickColor()
     {
-        color = cc.showDialog(null, "Choose a color", color);
+        Color newcolor = cc.showDialog(this, "Choose a color", color);
+        if (newcolor != null)
+        {
+            color = newcolor;
+        }
     }
     public void addCircle()
     {
         Point2D.Double shape = new Point2D.Double(200,200);
         Circle c = new Circle(shape, 50, color);
         this.shapes.add(c);
-        active = shapes.size() - 1;
-        repaint();
     }
     public void addSquare()
     {
         Point2D.Double shape = new Point2D.Double(200,200);
         Square s = new Square(shape, 50, color);
         this.shapes.add(s);
-        active = shapes.size() - 1;
-        repaint();
     }
+    
     public void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        for (int i = 0 ; i < active; i++)
+        for (Shape shape: shapes)
         {
+            shape.draw(g2,active == null? true: (!(active == shape)));
         }
-        repaint();
     }
     class MousePressListener implements MouseListener
     {
+        private boolean there;
         public void mousePressed(MouseEvent event)
         {
-            
+            there = false;
+            for (Shape shape: shapes)
+            {
+                Point2D.Double point = new Point2D.Double(event.getX(), event.getY());
+                if (shape.isInside(point))
+                {
+                    there = true;
+                    active = shape;
+                }
+            }
+            if (there != true)
+            {
+                active = null;
+            }
+            repaint();
         }
         public void mouseReleased(MouseEvent event)
         {
@@ -80,7 +99,8 @@ public class DrawingPanel extends JFrame
     {
         public void mouseDragged(MouseEvent event)
         {
-            
+            active.move(event.getX(), event.getY());
+            repaint();
         }
         public void mouseMoved(MouseEvent event)
         {
